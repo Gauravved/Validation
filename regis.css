@@ -1,0 +1,26 @@
+#passval,#conpassval,#panval,#mobval
+{
+    color: red;
+    font-size: 14px;
+}
+.valid2,.valid3,.valid4{
+    border:1px solid rgba(163, 163, 163, 0.623);
+    padding-left: 10px;
+    color: #505050;
+    border-radius: 3px;
+    height: 37px;
+    width: 100%;
+    -webkit-transition: 0.4s;
+    transition: 0.4s ease;
+}
+.valid2:focus , .valid3:focus , .valid4:focus{
+    outline: none;
+    -webkit-box-shadow: 0 0 8px rgb(55, 154, 172);
+    -moz-box-shadow:0 0 8px rgb(23, 152, 190);
+    box-shadow: 0 0 8px rgb(0, 132, 255);
+}
+.valid2.active , .valid3.active , .valid4.active
+{
+    border: 2px solid red ;
+    border-radius: 3px;
+}

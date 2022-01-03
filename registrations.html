@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugins-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <link rel="stylesheet" href="regis.css">
+    <title>Registrations form</title>
+</head>
+<body>
+    <div class="contatiner">
+        <h1 class="text-center" style="padding: 60px 0px 50px;">
+            Registration Form
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-4 m-auto" style="padding: 40px 0px 50px;">
+                <form action="C:\Users\win\eclipse-workspaceServletJSP\registration\src\main\java\registration" onsubmit="validate()" method="post">
+                    <div class="form-group">
+                        Username: <input type="text" id="uname" class="form-control valid" required>
+                    </div>
+                    <div class="form-group">
+                        Password: <input type="text" id="pass" class="form-control valid1" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}" title="1 Uppercase, 1 lowerCase, 1 AplhaNumeric, 1 Number" required minlength="8">
+                        <span id="passval"></span>
+                    </div>
+                    <div class="form-group">
+                        Confirm Password: <input type="text" id="conpass" class="valid2 " required>
+                        <span id="conpassval"></span>
+                    </div>
+                    <div class="form-group">
+                        PAN no: <input type="text" id="pan" class="valid3 " required>
+                        <span id="panval"></span>
+                    </div>
+                    <div class="form-group">
+                        Mobile no: <input type="number" id="mob" class="valid4 " required>
+                        <span id="mobval"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="submit" value="Submit" class="btn btn-success" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function validate() {
+        var user=document.getElementById('uname').value;
+        var pass=document.getElementById('pass').value;
+        var conpass=document.getElementById('conpass').value;
+        if(conpass!=pass)
+        {
+            document.getElementById('conpassval').innerHTML="Passwords does not match";
+            document.querySelector(".valid2").classList.add("active");
+            return false;
+        }
+        else{
+            document.getElementById('conpassval').innerHTML="";
+            document.querySelector(".valid2").classList.remove("active");
+            return true;
+        }
+        var pan=document.getElementById("pan").value;
+        var tests= /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+        if (!tests.test(pan)) {
+            document.getElementById("panval").innerHTML="PAN number is in incorrect format";
+            document.querySelector(".valid3").classList.add("active");
+            return false;
+        }
+        else{
+            document.getElementById("panval").innerHTML="";
+            document.querySelector(".valid3").classList.remove("active");
+            return true;
+        }
+        var mob=document.getElementById("mob").value;
+        var test2=/[7-9]{1}[0-9]{9}$/;
+        if (mob.length!=10 || !test2.test(mob)) {
+            document.getElementById("mobval").innerHTML="Invalid mobile no";
+            document.querySelector(".valid4").classList.add("active");
+            return false;
+        }
+        else{
+            document.getElementById("mobval").innerHTML="";
+            document.querySelector(".valid4").classList.remove("active");
+            return true;
+        }
+    }
+</script>
+</html>
